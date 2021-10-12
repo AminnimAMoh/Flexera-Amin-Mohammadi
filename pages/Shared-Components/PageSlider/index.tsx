@@ -13,8 +13,8 @@ function PageSlider({}: Props): ReactElement {
     
     return (
         <div className={styles.container}>
-            <span onClick={()=> pageNumber>1 && dispatch({type: "sub_number"})}></span>
-            <span onClick={()=> dispatch({type: "add_number"})}></span>
+            <span onClick={()=> pageNumber>1 && dispatch({type: "sub_number"})}/>
+            <span onClick={()=> dispatch({type: "add_number"})}/>
         </div>
     )
 }
