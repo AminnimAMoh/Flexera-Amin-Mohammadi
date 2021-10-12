@@ -2,7 +2,7 @@ export const initialState = {
   pageNumber: 1,
 };
 
-export const AppReducer = (state, action) => {
+export const AppReducer = (state: any, action: any) => {
   switch (action.type) {
     case "initialState_stored": {
       return action.value;

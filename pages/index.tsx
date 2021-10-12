@@ -3,17 +3,15 @@ import { useEffect, useState } from "react";
 import styles from "../styles/Home.module.scss";
 
 import { useAppContext } from "../context/AppContext";
+import { request, defaultEndPoint } from "../context/AppFetch";
 
 import UserList from "./UserList";
 import PageSlider from "./Shared-Components/PageSlider";
 
-import { Item } from "../Types/generalTypes";
-
-const defaultEndPoint =
-  "https://api.github.com/search/repositories?sort=stars&q=javascript&per_page=10&";
+import { FetchedItems } from "../Types/generalTypes";
 
 interface Props {
-  items: Item[];
+  items: FetchedItems[];
   incomplete_results: boolean;
   total_count: number;
 }
@@ -37,19 +35,10 @@ export default function Home({ ...props }: Props) {
 
   useEffect(() => {
     if (currentPage === pageNumber) return;
-    setCurrentPage(pageNumber)
-
-    async function request() {
-      try {
-        const responce = await fetch(
-          defaultEndPoint + `per_page=10&page=${pageNumber}`
-        );
-        setListData(await responce.json());
-      } catch (err) {
-        console.log(err);
-      }
-    }
-    request();
+    setCurrentPage(pageNumber);
+    request(pageNumber).then((res)=>{
+      setListData(res);
+    });
   }, [pageNumber]);
 
   const items = listData.items?.map((item) => {
