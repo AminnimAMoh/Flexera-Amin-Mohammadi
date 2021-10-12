@@ -11,6 +11,9 @@ function UserCards({ full_name, avatar_url, description }: Item): ReactElement {
         <h3>{full_name}</h3>
         <h3>{description}</h3>
       </div>
+      <div className={styles.container_box}>
+
+      </div>
     </div>
   );
 }
