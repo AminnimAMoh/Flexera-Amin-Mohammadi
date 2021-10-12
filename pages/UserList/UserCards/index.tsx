@@ -8,6 +8,9 @@ function UserCards({
   avatar_url,
   description,
 }: Item): ReactElement {
+  const handleBoxClick=(e: React.MouseEvent<HTMLLIElement, MouseEvent>)=>{
+    
+  }
   return (
     <ul className={styles.container}>
         <Image
@@ -22,7 +25,7 @@ function UserCards({
           {description}
         </p>
       </li>
-      <li className={styles.container_box}></li>
+      <li className={styles.container_box} onClick={(e)=>handleBoxClick(e)}></li>
     </ul>
   );
 }

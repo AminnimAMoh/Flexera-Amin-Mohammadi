@@ -9,8 +9,6 @@ interface Props {
 
 function PageSlider({}: Props): ReactElement {
     const {state: {pageNumber}, dispatch}=useAppContext();
-    console.log(pageNumber);
-    
     return (
         <div className={styles.container}>
             <span onClick={()=> pageNumber>1 && dispatch({type: "sub_number"})}/>

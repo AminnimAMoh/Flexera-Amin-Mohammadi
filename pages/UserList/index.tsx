@@ -7,8 +7,6 @@ interface Props {
 }
 
 function UserList({ items }: Props): ReactElement {
-  // console.log(items);
-
   return (
     <div>
       {items &&

@@ -74,7 +74,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-, "context/AppReducer.tsx", "context/AppContext.tsxx"  ],
+, "context/AppReducer.tsx", "context/AppContext.tsxx", "utilities/manageData.js"  ],
   "exclude": [
     "node_modules"
   ]
