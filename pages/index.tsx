@@ -15,9 +15,10 @@ interface Props {
 }
 
 export const getStaticProps = async () => {
+  const {state}=useAppContext();
   try {
     const responce = await fetch(
-      "https://api.github.com/search/repositories?sort=stars&q=javascript&per_page=10&page=1"
+      `https://api.github.com/search/repositories?sort=stars&q=javascript&per_page=10&page=${state}`
     );
     const data = await responce.json();
     return { props: { ...data } };
