@@ -1,6 +1,10 @@
 import Head from "next/head";
-import UserList from "./UserList";
 import styles from "../styles/Home.module.css";
+
+import { useAppContext } from "../context/AppContext";
+
+import UserList from "./UserList";
+import PageSlider from "./Shared-Components/PageSlider"
 
 import {Item} from "../Types/generalTypes"
 
@@ -42,6 +46,7 @@ export default function Home({ ...props }: Props) {
 
       <main className={styles.main}>
         <h3>browse github</h3>
+        <PageSlider />
         <UserList items={items} />
       </main>
     </div>

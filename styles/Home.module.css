@@ -1,7 +1,11 @@
-.container{
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 16px;
+.container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 16px;
+  margin-top: 10em;
+}
+.main > * {
+  margin-top: 16px;
 }
