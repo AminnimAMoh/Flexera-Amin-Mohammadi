@@ -16,8 +16,22 @@
     justify-content: space-between;
     padding: 16px;
     margin-left: 32px;
-    & > p {
-        width: 100px;
+    &__header {
+      width: 10px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
+  &_Typography {
+    &__header{
+      width: 400px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+    &__discription {
+      width: 200px;
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;

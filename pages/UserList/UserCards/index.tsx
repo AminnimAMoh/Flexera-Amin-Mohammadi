@@ -8,8 +8,8 @@ function UserCards({ full_name, avatar_url, description }: Item): ReactElement {
     <ul className={styles.container}>
       <Image src={avatar_url} alt="Image_Content" width="100%" height="100%" />
       <li className={styles.container_infoCards}>
-        <h4>{full_name}</h4>
-        <p>{description}</p>
+        <h4 className={styles.container_Typography__header}>{full_name}</h4>
+        <p className={styles.container_Typography__discription}>{description}</p>
       </li>
       <li className={styles.container_box}>
 
