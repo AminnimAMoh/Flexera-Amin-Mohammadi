@@ -1,5 +1,5 @@
 export const initialState = {
-  pageNumber: 0,
+  pageNumber: 1,
 };
 
 type State = {

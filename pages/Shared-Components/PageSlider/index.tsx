@@ -8,11 +8,11 @@ interface Props {
 }
 
 function PageSlider({}: Props): ReactElement {
-    const {dispatch}=useAppContext();
+    const {state: {pageNumber}, dispatch}=useAppContext();
     return (
         <div className={styles.container}>
+            <span onClick={()=> pageNumber>1 && dispatch({type: "sub_number"})}></span>
             <span onClick={()=> dispatch({type: "add_number"})}></span>
-            <span onClick={()=> dispatch({type: "sub_number"})}></span>
         </div>
     )
 }

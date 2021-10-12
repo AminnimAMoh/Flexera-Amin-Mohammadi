@@ -5,11 +5,12 @@ import styles from "../styles/Home.module.css";
 import { useAppContext } from "../context/AppContext";
 
 import UserList from "./UserList";
-import PageSlider from "./Shared-Components/PageSlider"
+import PageSlider from "./Shared-Components/PageSlider";
 
-import {Item} from "../Types/generalTypes"
+import { Item } from "../Types/generalTypes";
 
-const defaultEndPoint="https://api.github.com/search/repositories?sort=stars&q=javascript&per_page=10&";
+const defaultEndPoint =
+  "https://api.github.com/search/repositories?sort=stars&q=javascript&per_page=10&";
 
 interface Props {
   items: Item[];
@@ -19,9 +20,7 @@ interface Props {
 
 export const getServerSideProps = async () => {
   try {
-    const responce = await fetch(
-      defaultEndPoint+"per_page=10&page=1"
-    );
+    const responce = await fetch(defaultEndPoint + "per_page=10&page=1");
     const data = await responce.json();
     return { props: { ...data } };
   } catch (err) {
@@ -30,24 +29,37 @@ export const getServerSideProps = async () => {
 };
 
 export default function Home({ ...props }: Props) {
-  const {state: {pageNumber}} = useAppContext();
-  const [currentPage, setCurrentPage]=useState<number>(1);
-  const [listData, setListData]=useState<Props>(props)
-  useEffect(() => {
-    currentPage !== pageNumber && setCurrentPage(pageNumber)
-  }, [pageNumber])
+  const {
+    state: { pageNumber },
+  } = useAppContext();
+  const [currentPage, setCurrentPage] = useState<number>(pageNumber);
+  const [listData, setListData] = useState<Props>(props);
 
-  console.log(currentPage);
-  
-  
-  const items = props.items.map((item) => {
+  useEffect(() => {
+    if (currentPage !== pageNumber) setCurrentPage(pageNumber);
+
+    // console.log(currentPage, listData.items);
+    async function request() {
+      try {
+        const responce = await fetch(
+          defaultEndPoint + `per_page=10&page=${currentPage}`
+        );
+        setListData(await responce.json());
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    request();
+  }, [pageNumber]);
+
+  const items = listData.items?.map((item) => {
     return {
       full_name: item.full_name,
       avatar_url: item.owner?.avatar_url,
       description: item.description,
     };
   });
-  
+
   return (
     <div className={styles.container}>
       <Head>
