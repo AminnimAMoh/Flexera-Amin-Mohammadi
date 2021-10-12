@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { useEffect, useState } from "react";
-import styles from "../styles/Home.module.css";
+import styles from "../styles/Home.module.scss";
 
 import { useAppContext } from "../context/AppContext";
 
@@ -68,7 +68,7 @@ export default function Home({ ...props }: Props) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
+      <main className={styles.container_main}>
         <h3>browse github</h3>
         <PageSlider />
         <UserList items={items} />

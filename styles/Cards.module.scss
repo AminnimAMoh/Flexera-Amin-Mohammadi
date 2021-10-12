@@ -6,19 +6,19 @@
     padding: 16px;
     margin-top: 16px;
     border: 1px solid black;
-}
-
-.container_infoCards{
-    flex: 1;
+    list-style: none;
+    margin-left: 0;
+    &_infoCards{
+         flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     padding: 16px;
-    margin-left: 32px;
-}
-
-.container_box{
-    width: 30px;
+    margin-left: 32px;   
+    }
+    &_box{
+           width: 30px;
     height: 30px;
-    border: .5px solid black;
+    border: .5px solid black; 
+    }
 }

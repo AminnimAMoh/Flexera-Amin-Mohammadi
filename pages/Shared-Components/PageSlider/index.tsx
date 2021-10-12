@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react'
 import { useAppContext } from "../../../context/AppContext";
 
-import styles from "../../../styles/PageSlider.module.css";
+import styles from "../../../styles/PageSlider.module.scss";
 
 interface Props {
     
