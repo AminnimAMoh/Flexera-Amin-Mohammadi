@@ -2,16 +2,17 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.manageData = void 0;
 function manageData(res) {
-    return res.items;
-    // res.items.map((item: any, index: number) => {
-    //   const simplifiedItem = {
-    //     full_name: item.full_name,
-    //     avatar_url: item.owner?.avatar_url,
-    //     description: item.description,
-    //     index: index,
-    //   };
-    //   return simplifiedItem;
-    // });
+    const managed = res.items.map((item, index) => {
+        var _a;
+        const simplifiedItem = {
+            full_name: item.full_name,
+            avatar_url: (_a = item.owner) === null || _a === void 0 ? void 0 : _a.avatar_url,
+            description: item.description,
+            index: index,
+        };
+        return simplifiedItem;
+    });
+    return managed;
 }
 exports.manageData = manageData;
 ;
