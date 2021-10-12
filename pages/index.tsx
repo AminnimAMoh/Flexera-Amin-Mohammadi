@@ -23,10 +23,11 @@ export const getStaticProps = async () => {
 };
 
 export default function Home({ ...props }: Props) {
+
   const items = props.items.map((item) => {
     return {
       full_name: item.full_name,
-      avatar_url: item.avatar_url,
+      avatar_url: item.owner?.avatar_url,
       description: item.description,
     };
   });
