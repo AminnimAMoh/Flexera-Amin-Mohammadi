@@ -1,19 +1,30 @@
 export const initialState = {
-  number: 0,
+  pageNumber: 0,
 };
 
-export const AppReducer = (state, action) => {
+type State = {
+  pageNumber: number;
+  isLoading: boolean;
+  error?: string;
+};
+
+interface Action {
+  type: string;
+  value: number;
+}
+
+export const AppReducer = (state: State, action: Action) => {
   switch (action.type) {
     case "add_number": {
       return {
         ...state,
-        number: action.value + state.number,
+        pageNumber: state.pageNumber+1,
       };
     }
     case "sub_number": {
       return {
         ...state,
-        number: action.value - state.number,
+        pageNumber: state.pageNumber-1,
       };
     }
   }
