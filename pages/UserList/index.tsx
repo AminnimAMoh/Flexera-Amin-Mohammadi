@@ -9,7 +9,7 @@ interface Props {
 function UserList({ items }: Props): ReactElement {
   return (
     <div>
-      {items &&
+      {items.length &&
         items.map((item: Item) => {
           return <UserCards key={item.full_name} {...item} />;
         })}

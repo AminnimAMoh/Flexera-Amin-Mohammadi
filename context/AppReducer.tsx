@@ -4,13 +4,12 @@ export const initialState = {
 };
 
 export const AppReducer = (state: any, action: any) => {
-  console.log("hello");
   
   switch (action.type) {
     case "request_reserve": {
       return {
         ...state,
-        data: [...state.data,action.value],
+        data: action.value,
       };
     }
     case "initialState_stored": {
