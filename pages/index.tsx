@@ -36,13 +36,13 @@ export default function Home({ ...props }: Props) {
   const [listData, setListData] = useState<Props>(props);
 
   useEffect(() => {
-    if (currentPage !== pageNumber) setCurrentPage(pageNumber);
+    if (currentPage === pageNumber) return;
+    setCurrentPage(pageNumber)
 
-    // console.log(currentPage, listData.items);
     async function request() {
       try {
         const responce = await fetch(
-          defaultEndPoint + `per_page=10&page=${currentPage}`
+          defaultEndPoint + `per_page=10&page=${pageNumber}`
         );
         setListData(await responce.json());
       } catch (err) {

@@ -1,21 +1,22 @@
 import React, { ReactElement } from "react";
 import { Item } from "../../Types/generalTypes";
-import UserCards from './UserCards'
+import UserCards from "./UserCards";
 
-interface Props{
-    items: Item[];
+interface Props {
+  items: Item[];
 }
 
-function UserList({items}: Props): ReactElement {
-    // console.log(items);
-    
-  return <div>
-      {items.map((item: Item)=>{
-          return (
-              <UserCards key={item.full_name} {...item}/>
-          )
-      })}
-  </div>;
+function UserList({ items }: Props): ReactElement {
+  // console.log(items);
+
+  return (
+    <div>
+      {items &&
+        items.map((item: Item) => {
+          return <UserCards key={item.full_name} {...item} />;
+        })}
+    </div>
+  );
 }
 
 export default UserList;
