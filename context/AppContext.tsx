@@ -16,7 +16,7 @@ interface PageState {
   dispatch: any;
   state: {
     pageNumber: number;
-    data: [];
+    data: [{}];
   };
 }
 export function AppWrapper({ children }: any) {
@@ -34,11 +34,12 @@ export function AppWrapper({ children }: any) {
   useEffect(() => {
     // Object.keys(state).length === 0 && state.constructor === Object
     // Found at https://www.samanthaming.com/tidbits/94-how-to-check-if-object-is-empty/
-    if(Object.keys(state).length === 0 && state.constructor === Object){
-      console.log("hello");
+    const storeUndefinedTest=Object.keys(state).length === 0 && state.constructor === Object;
+    if(storeUndefinedTest){
+      console.log(initialState);
       
       localStorage.setItem("state", JSON.stringify(initialState));
-    }else if (state !== initialState) {
+    }else if (!storeUndefinedTest && state !== initialState) {
       localStorage.setItem("state", JSON.stringify(state));
     }
   }, [state]);

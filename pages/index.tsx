@@ -23,14 +23,14 @@ export const getServerSideProps = async () => {
 export default function Home({ ...props }: Props) {
   const {
     state: { pageNumber },
-    dispatch,
   } = useAppContext();
-  const [currentPage, setCurrentPage] = useState<number>(1);
+  
+  // const [currentPage, setCurrentPage] = useState<number>(1);
   const [listData, setListData] = useState<any>(props);
 
   useEffect(() => {
     // if (currentPage === pageNumber) return;
-    setCurrentPage(pageNumber);
+    // setCurrentPage(pageNumber);
     request(pageNumber).then((res) => {
       if (res && res.length === 10) {
         setListData(res);
