@@ -16,7 +16,9 @@ interface Props {
 
 export const getServerSideProps = async () => {
   const data = await request(1);
-  console.log(data);
+  if(data.items==="error"){
+    console.log("error");
+  }
   return { props: { ...data } };
 };
 
@@ -29,12 +31,9 @@ export default function Home({ ...props }: Props) {
   const [listData, setListData] = useState<any>(props);
 
   useEffect(() => {
-    // if (currentPage === pageNumber) return;
-    // setCurrentPage(pageNumber);
     request(pageNumber).then((res) => {
       if (res && res.length === 10) {
         setListData(res);
-        // dispatch({ type: "request_reserve", value: { newData } });
       }
     });
   }, [pageNumber]);

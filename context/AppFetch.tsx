@@ -8,11 +8,10 @@ export async function request(pageNumber: number) {
     const responce = await fetch(
       defaultEndPoint + `per_page=10&page=${pageNumber}`
     );
-    const data=await responce.json()
-    const simplifiedItem=await manageData(data);
+    const data = await responce.json();
+    const simplifiedItem = await manageData(data);
     return simplifiedItem;
-  } catch (err) {
-    alert("Sorry!!! Something went wrong. \nPlease try again in a couple of minutes.")
-      return {items: "error"}
+  } catch {
+    return { items: "error" };
   }
 }
