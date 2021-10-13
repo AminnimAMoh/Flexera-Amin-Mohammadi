@@ -1,12 +1,18 @@
-import React, { ReactElement } from "react";
+import React, { ReactElement, useEffect } from "react";
 import { Item } from "../../Types/generalTypes";
 import UserCards from "./UserCards";
+import { useAppContext } from "../../context/AppContext";
 
 interface Props {
   items: Item[];
 }
 
 function UserList({ items }: Props): ReactElement {
+  const { dispatch } = useAppContext();
+  useEffect(() => {
+    console.log(items);
+    dispatch({ type: "reserve_new-data", value: {...items} });
+  }, [items, dispatch]);
   return (
     <div>
       {items.length &&

@@ -1,15 +1,15 @@
 export const initialState = {
   pageNumber: 1,
-  data: [{}]
+  data: [{}],
 };
 
 export const AppReducer = (state: any, action: any) => {
-  
   switch (action.type) {
-    case "request_reserve": {
+    case "reserve_new-data": {
+      console.log(state.data)
       return {
         ...state,
-        data: action.value,
+        // data: [...state.data, action.value]
       };
     }
     case "initialState_stored": {

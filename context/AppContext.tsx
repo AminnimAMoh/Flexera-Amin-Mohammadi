@@ -7,7 +7,6 @@ import {
 } from "react";
 
 import { AppReducer, initialState } from "./AppReducer";
-import { request } from "./AppFetch";
 
 const AppContext = createContext({});
 
@@ -17,6 +16,7 @@ interface PageState {
   dispatch: any;
   state: {
     pageNumber: number;
+    data: [];
   };
 }
 export function AppWrapper({ children }: any) {
@@ -32,7 +32,13 @@ export function AppWrapper({ children }: any) {
   }, []);
 
   useEffect(() => {
-    if (state !== initialState) {
+    // Object.keys(state).length === 0 && state.constructor === Object
+    // Found at https://www.samanthaming.com/tidbits/94-how-to-check-if-object-is-empty/
+    if(Object.keys(state).length === 0 && state.constructor === Object){
+      console.log("hello");
+      
+      localStorage.setItem("state", JSON.stringify(initialState));
+    }else if (state !== initialState) {
       localStorage.setItem("state", JSON.stringify(state));
     }
   }, [state]);
