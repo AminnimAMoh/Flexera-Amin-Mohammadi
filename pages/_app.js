@@ -1,4 +1,4 @@
-import "../styles/globals.css";
+import "../styles/globals.scss";
 import { AppWrapper } from "../context/AppContext";
 
 function MyApp({ Component, pageProps }) {

@@ -18,7 +18,6 @@ export const AppReducer = (state: any, action: any) => {
         }
     }
     case "interaction_addNewTouchedElement": {
-      console.log("Pushing to the array");
       return {
         ...state,
         touched: [

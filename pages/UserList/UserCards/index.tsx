@@ -51,8 +51,6 @@ function UserCards({ full_name, avatar_url, description }: Item): ReactElement {
         setVisibleFlag("visible")
       }
     }
-    console.log(visibleFlag,objectIsTouched);
-    
   };
 
   useEffect(()=>{
