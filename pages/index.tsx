@@ -16,7 +16,7 @@ interface Props {
 
 export const getServerSideProps = async () => {
   const data = await request(1);
-  if(data.items==="error"){
+  if (data.items === "error") {
     console.log("error");
   }
   return { props: { ...data } };
@@ -26,17 +26,20 @@ export default function Home({ ...props }: Props) {
   const {
     state: { pageNumber },
   } = useAppContext();
-  
-  // const [currentPage, setCurrentPage] = useState<number>(1);
+
+  const [currentPage, setCurrentPage] = useState<number>(1);
   const [listData, setListData] = useState<any>(props);
 
   useEffect(() => {
+    if (currentPage === 1 && currentPage !== pageNumber) {
+      setCurrentPage(pageNumber);
+    }
     request(pageNumber).then((res) => {
       if (res && res.length === 10) {
         setListData(res);
       }
     });
-  }, [pageNumber]);
+  }, [pageNumber, currentPage]);
 
   return (
     <div className={styles.container}>
