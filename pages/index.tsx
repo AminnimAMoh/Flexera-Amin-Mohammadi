@@ -27,7 +27,7 @@ export default function Home({ ...props }: Props) {
     state: { pageNumber },
   } = useAppContext();
 
-  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [currentPage, setCurrentPage] = useState<number>(pageNumber);
   const [listData, setListData] = useState<any>(props);
 
   useEffect(() => {
@@ -39,7 +39,7 @@ export default function Home({ ...props }: Props) {
         setListData(res);
       }
     });
-  }, [pageNumber, currentPage]);
+  }, [pageNumber]);
 
   return (
     <div className={styles.container}>
@@ -50,7 +50,7 @@ export default function Home({ ...props }: Props) {
       </Head>
 
       <main className={styles.container_main}>
-        <h3>browse github</h3>
+        <h3>Browse Github</h3>
         <PageSlider />
         {props.items !== "error" && <UserList items={listData} />}
       </main>
