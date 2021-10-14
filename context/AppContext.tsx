@@ -31,6 +31,8 @@ export function AppWrapper({ children }: any) {
   }, []);
 
   useEffect(() => {
+    console.log(state);
+    
     if (state !== initialState) {
       localStorage.setItem("state", JSON.stringify(state));
     }

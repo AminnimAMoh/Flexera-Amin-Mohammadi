@@ -8,20 +8,12 @@ import { useAppContext } from "../../../context/AppContext";
 function UserCards({ full_name, avatar_url, description }: Item): ReactElement {
   const {
     dispatch,
-    state: { touched },
   } = useAppContext();
   const handleBoxClick = (
     e: React.MouseEvent<HTMLLIElement, MouseEvent>,
     full_name: string
   ) => {
-    // const test = (touched: any, full_name: any) => {
-    //   for (let i = 0; i < touched.length; i++) {
-    //     if (touched[i].name === full_name) return true;
-    //   }
-    // };
-    // console.log(test(touched, full_name));
-
-    // dispatch({ type: "interactio_focused", value: full_name });
+    dispatch({ type: "interactio_focused", value: full_name });
   };
   return (
     <ul className={styles.container}>
