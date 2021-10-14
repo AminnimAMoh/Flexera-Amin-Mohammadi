@@ -42,21 +42,23 @@ function UserCards({ full_name, avatar_url, description }: Item): ReactElement {
           type: "interaction_changeFocusedState",
           value: { index: objectIsTouched.index, state: "hidden" },
         });
-        setVisibleFlag("visible")
+        setVisibleFlag("hidden")
       } else {
         dispatch({
           type: "interaction_changeFocusedState",
           value: { index: objectIsTouched.index, state: "visible" },
         });
-        setVisibleFlag("hidden")
+        setVisibleFlag("visible")
       }
     }
+    console.log(visibleFlag,objectIsTouched);
+    
   };
 
   useEffect(()=>{
     const objectIsTouched = touched.find(({ name }) => name === full_name);
     if(objectIsTouched) setVisibleFlag(objectIsTouched.state)
-  }, [])
+  }, [visibleFlag])
   return (
     <ul className={styles.container}>
       <Image src={avatar_url} alt="Image_Content" className={styles.container_Image} width="100%" height="100%" />
@@ -71,12 +73,12 @@ function UserCards({ full_name, avatar_url, description }: Item): ReactElement {
         onClick={(e) => handleBoxClick(e, full_name)}
       >
         <div
-          className={`${
+          className={`${styles.container_visibleFlag} ${
             visibleFlag === "visible"
-              ? `${styles.container_visibleFlag_visible}`
+              ? `${styles.container__visible}`
               : visibleFlag === "hidden"
-              ? `${styles.container_visibleFlag_hidden}`
-              : `${styles.container_visibleFlag}`
+              ? `${styles.container__hidden}`
+              : ``
           }`}
         />
       </li>
