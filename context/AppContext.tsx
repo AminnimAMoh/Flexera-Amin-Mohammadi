@@ -16,6 +16,11 @@ interface PageState {
   dispatch: any;
   state: {
     pageNumber: number;
+    touched:[{
+      name: string;
+      state: string;
+      index: number,
+    }]
   };
 }
 export function AppWrapper({ children }: any) {
@@ -31,8 +36,6 @@ export function AppWrapper({ children }: any) {
   }, []);
 
   useEffect(() => {
-    console.log(state);
-    
     if (state !== initialState) {
       localStorage.setItem("state", JSON.stringify(state));
     }

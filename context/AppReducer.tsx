@@ -1,24 +1,37 @@
 export const initialState = {
   pageNumber: 1,
-  touched: [{
-    name: '',
-    state: 'notTuched'
-  }],
+  touched: [
+    {
+      name: "",
+      state: "notTuched",
+      index: 0,
+    },
+  ],
 };
 
 export const AppReducer = (state: any, action: any) => {
   switch (action.type) {
-    case "interactio_focused": {
+    case "interaction_changeFocusedState":{
+        state.touched[action.value.index].state=action.value.state;
         return {
-          ...state,
-          touched: [...state.touched, {name: action.value, state: 'touched'}],
-        };
+          ...state
+        }
+    }
+    case "interaction_addNewTouchedElement": {
+      console.log("Pushing to the array");
+      return {
+        ...state,
+        touched: [
+          ...state.touched,
+          { name: action.value.name, state: action.value.state, index: state.touched.length },
+        ],
+      };
     }
     case "initialState_stored": {
       return {
         ...state,
-        ...action.value
-      }
+        ...action.value,
+      };
     }
     case "add_number": {
       return {
